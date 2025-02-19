@@ -8,6 +8,8 @@
     --publish, -p: puerto en el que se va mostrar ( HOST_PORT:CONTAINER_PORT ) 
     --env, -e: variables de entorno ( MARIADB_USER_NAME=user-example )
     --detach, -d: desacopla el log del contenedor de la terminal
+    --volume, -v: Permite unir a un volumen
+    --network: Permite conectar a una red un contenedor
 
   EJEMPLO:
     docker container run `
@@ -15,7 +17,8 @@
     --env MARIADB_USER=user `
     --env MARIADB_PASSWORD=user `
     --env MARIADB_DATABASE=world-db `
-    --dp 3306:3306
+    --dp 3306:3306 `
+    --network world-db-network `
     mariadb:11.4-ubi
     ` -> permite insertar multilineas en powershell
 ```
