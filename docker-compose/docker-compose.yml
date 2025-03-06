@@ -1,0 +1,44 @@
+# VERSION DEL DOCKER COMPOSE A UTILIZAR
+# version: '3.9'
+
+# LISTA DE SERVICIOS
+services:
+  # SERVICIO DE BASE DE DATOS
+  postgres-db:
+    container_name: postgres-db-tuto
+    image: postgres:15-alpine
+    volumes:
+      # - postgres-db-volume:/var/lib/postgresql/data
+
+      # Realiza un bind volume
+      - ./postgres-bind-volume:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres-db-tuto
+    networks:
+      - postgres-db-network
+
+
+  # SERVICIO DE PGADMIN
+  pgAdmin:
+    container_name: pgAdmin-4
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres-db
+    ports:
+      - "8080:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=test@test.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    networks:
+      - postgres-db-network
+
+volumes:
+  postgres-db-volume:
+    external: true
+
+networks:
+  postgres-db-network:
