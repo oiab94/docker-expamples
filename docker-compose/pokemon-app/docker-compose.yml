@@ -1,0 +1,29 @@
+services:
+  # BASE DE DATOS
+  mongo-db:
+    container_name: ${MONGO_DB_NAME}
+    image: mongo:6.0
+    volumes:
+      - ./poke-db-vol:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
+    ports:
+      - 27017:27017
+    restart: always
+    command: ['--auth']
+
+
+  # MANEJADOR DE BASE DE DATOS
+  mongo-express:
+    container_name: ${MONGO_EXPRESS_NAME}
+    image: mongo-express:1.0-20-alpine3.19
+    depends_on:
+      - mongo_db
+    ports:
+      - 8081:8081
+
+
+volumes:
+  poke-vol:
+    external: false
