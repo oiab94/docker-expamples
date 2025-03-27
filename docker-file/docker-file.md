@@ -23,6 +23,9 @@ CMD ["node", "app.js"]
 
 ```shell
 docker build `
-  --tag cron-ticker-test `
+  --tag cron-ticker-test:[tag] `
   .
 ```
+
+Por defecto el tag siempre se carga como latest, nosotros podemos cargar el tag
+que deseamos.

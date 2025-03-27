@@ -6,5 +6,6 @@ var taskExecutdeAmount = 0;
 
 cron.schedule('1-59/5 * * * * *', () => {
   taskExecutdeAmount++;
-  console.log(`running a task every 5 second, task executed ${ taskExecutdeAmount }`);
+  console.log(`RUNNING A TASK EVERY 5 SECOND, TASK EXECUTED`);
+  console.log(`TASK EXECUTED AMOUNT: ${ taskExecutdeAmount }`);
 });
