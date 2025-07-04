@@ -9,6 +9,7 @@ manejamos nuestra aplicación.
 # Contenido
 1. [Comandos Docker](./docker-cheatsheet/docker-cheat-sheet.pdf).
 2. [Busqueda, descarga y listar imagenes en docker](#images)
+2. [Correr, listar y borrar contenedores en docker](#containers)
 
 
 # Anexo
